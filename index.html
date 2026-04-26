@@ -692,7 +692,7 @@ function doPrint(html) {
   var frame = document.getElementById('print-frame');
   frame.innerHTML = '<style>body{font-family:"Hiragino Sans","Hiragino Kaku Gothic ProN","Meiryo",sans-serif}</style>' + html;
   window.print();
-  setTimeout(function(){ frame.innerHTML = ''; }, 1500);
+  frame.innerHTML = '';
 }
 
 function printCurrent() {
@@ -709,9 +709,7 @@ function printModal() {
   if (!currentModal) return;
   var e = currentModal;
   closeModal();
-  setTimeout(function(){
-    doPrint('<h1 style="font-size:16px;text-align:center;margin-bottom:14px">\u4e8b\u52d9\u65e5\u8a8c</h1>' + buildPrintTable(e));
-  }, 300);
+  doPrint('<h1 style="font-size:16px;text-align:center;margin-bottom:14px">\u4e8b\u52d9\u65e5\u8a8c</h1>' + buildPrintTable(e));
 }
 
 function printMonthlyDetail() {
