@@ -367,6 +367,15 @@ function saveEntry() {
     showToast('保存しました', 'ok');
   }
   saveStorage();
+  // 保存後クリア（担当者名・在籍人数合計は引き継ぎ、それ以外をクリア）
+  var nextDate = new Date(e.date);
+  nextDate.setDate(nextDate.getDate() + 1);
+  var y = nextDate.getFullYear();
+  var m = pad(nextDate.getMonth()+1);
+  var d = pad(nextDate.getDate());
+  document.getElementById('f-date').value = y + '-' + m + '-' + d;
+  ['f-infname','f-infcount','f-infnote','f-note'].forEach(function(id){ document.getElementById(id).value = ''; });
+  ['zougen-list','temp-list','btrip-list'].forEach(function(id){ document.getElementById(id).innerHTML = ''; });
 }
 
 function startEdit() {
