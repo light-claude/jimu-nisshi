@@ -692,8 +692,10 @@ function doPrint(html) {
   var frame = document.getElementById('print-frame');
   frame.innerHTML = '<style>body{font-family:"Hiragino Sans","Hiragino Kaku Gothic ProN","Meiryo",sans-serif}</style>' + html;
   window.print();
-  frame.innerHTML = '';
 }
+window.addEventListener('afterprint', function() {
+  document.getElementById('print-frame').innerHTML = '';
+});
 
 function printCurrent() {
   var e = {
